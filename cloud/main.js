@@ -19,13 +19,13 @@ var APP_NAME = process.env.APP_NAME;
 
 var MG_DOMAIN = process.env.MG_DOMAIN;
 var MG_KEY = process.env.MG_KEY;
-var MG_MAIL_LIST_NAME = process.env.MG_MAIL_LIST_NAME						// "singlefdi_stakeholders@sandbox83806a9b5a2d4766bbc96ce996f96fc6.mailgun.org"
-var MG_FLA_MAIL_LIST_NAME = process.env.MG_FLA_MAIL_LIST_NAME				// "fla_stakeholders@sandbox83806a9b5a2d4766bbc96ce996f96fc6.mailgun.org"
-var MG_SFDI_MAIL_SUBJUST_PREFIX = process.env.MG_SFDI_MAIL_SUBJUST_PREFIX	// "Single FDI Trial product "
-var MG_FLA_MAIL_SUBJUST_PREFIX = process.env.MG_FLA_MAIL_SUBJUST_PREFIX		// "Fuel Load Amendments Trial "
+var MG_MAIL_LIST_NAME = process.env.MG_MAIL_LIST_NAME
+var MG_FLA_MAIL_LIST_NAME = process.env.MG_FLA_MAIL_LIST_NAME
+var MG_SFDI_MAIL_SUBJUST_PREFIX = process.env.MG_SFDI_MAIL_SUBJUST_PREFIX
+var MG_FLA_MAIL_SUBJUST_PREFIX = process.env.MG_FLA_MAIL_SUBJUST_PREFIX
 var CFA_NEMP_EMAIL = process.env.EMAIL_ADDR_CFA_NEMP;
 
-var FILES_OLDER_THAN_DAYS = process.env.FILES_OLDER_THAN_DAYS				// 7;
+var FILES_OLDER_THAN_DAYS = process.env.FILES_OLDER_THAN_DAYS
 
 //Use Parse.Cloud.define to define as many cloud functions as you want.
 //For example:
