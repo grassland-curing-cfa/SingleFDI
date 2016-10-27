@@ -32,7 +32,7 @@ var FILES_OLDER_THAN_DAYS = process.env.FILES_OLDER_THAN_DAYS
 Parse.Cloud.define("hello", function(request, response) {
 	var user = request.user;
 	var token = user.getSessionToken();
-	var console.log(JSON.stringify(user));
+	console.log(JSON.stringify(user));
 	
 	response.success("Hello world from " + APP_NAME);
 });
