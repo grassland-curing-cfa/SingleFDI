@@ -30,6 +30,10 @@ var FILES_OLDER_THAN_DAYS = process.env.FILES_OLDER_THAN_DAYS
 //Use Parse.Cloud.define to define as many cloud functions as you want.
 //For example:
 Parse.Cloud.define("hello", function(request, response) {
+	var user = request.user;
+	var token = user.getSessionToken();
+	var console.log(JSON.stringify(user));
+	
 	response.success("Hello world from " + APP_NAME);
 });
 
