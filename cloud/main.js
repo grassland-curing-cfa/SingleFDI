@@ -3,10 +3,8 @@
  *
  * Cloud code for "singlefdi-trial-dev" connected to the "singlefdi" MongoLab DB deployed on Heroku
  * Git repo: 				https://github.com/grassland-curing-cfa/SingleFDI
- * Heroku app: 				https://singlefdi-trial-dev.herokuapp.com/parse
- * Initial checkin date: 	27/10/2016
- * Following-up check date:	
- * https://singlefdi-trial-dev.herokuapp.com/parse/
+ * Initial checkin date:	27/10/2016
+ * Following-up check date:	13/12/2016: NEMP-1-151: Remove unnecessary Parse.User.logIn(SUPERUSER, SUPERPASSWORD) and Parse.Cloud.useMasterKey() in the Cloud function
  */
 
 var _ = require('underscore');
@@ -14,7 +12,7 @@ var moment = require('moment');
 
 var APP_ID = process.env.APP_ID;
 var MASTER_KEY = process.env.MASTER_KEY;
-var SERVER_URL = process.env.SERVER_URL;									// https://singlefdi-trial-dev.herokuapp.com/parse
+var SERVER_URL = process.env.SERVER_URL;
 var APP_NAME = process.env.APP_NAME;
 
 var MG_DOMAIN = process.env.MG_DOMAIN;
@@ -102,7 +100,6 @@ Parse.Cloud.beforeDelete("FLA_UPLOADED", function(request, response) {
  * Remove the SFDI_UPLOADED records that are more than 7 days old after a new record is inserted
  */
 Parse.Cloud.afterSave("SFDI_UPLOADED", function(request) {
-	Parse.Cloud.useMasterKey();
 	var SFDItodelete = [];
 	var count = 0;
 	
@@ -131,7 +128,6 @@ Parse.Cloud.afterSave("SFDI_UPLOADED", function(request) {
  * Remove the FLA_UPLOADED records that are more than 7 days old after a new record is inserted
  */
 Parse.Cloud.afterSave("FLA_UPLOADED", function(request) {
-	Parse.Cloud.useMasterKey();
 	var FLAtodelete = [];
 	var count = 0;
 	
@@ -158,8 +154,6 @@ Parse.Cloud.afterSave("FLA_UPLOADED", function(request) {
 
 //Send an email for SingleFDI_Trial product to the State Control Team mail list.
 Parse.Cloud.define("sendSingleFDIEmailToUsers", function(request, response) {
-	Parse.Cloud.useMasterKey();
-
 	var rawStrToday = request.params.dateString;	// in the format of "%d_%m_%Y"
 	var strToday = rawStrToday.replace(/_/g, '/');
 	
@@ -268,8 +262,6 @@ Parse.Cloud.define("sendSingleFDIEmailToUsers", function(request, response) {
 
 //Send an email for Fuel_Load_Amendments_Trial product to the State Control Team mail list.
 Parse.Cloud.define("sendFuelLoadAmendmentsEmailToUsers", function(request, response) {
-	Parse.Cloud.useMasterKey();
-
 	var rawStrToday = request.params.dateString;	// in the format of "%d_%m_%Y"
 	var strToday = rawStrToday.replace(/_/g, '/');
 	
