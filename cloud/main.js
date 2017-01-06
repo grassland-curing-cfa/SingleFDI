@@ -154,6 +154,34 @@ Parse.Cloud.afterSave("FLA_UPLOADED", function(request) {
 	});	
 });
 
+// Remove the SFDI_UPLOADED records that are more than 7 days old after a new record is inserted 
+Parse.Cloud.define("deleteOldSFDI", function(request, response) {
+	var SFDItodelete = [];
+	var count = 0;
+	
+	query = new Parse.Query("SFDI_UPLOADED");
+	query.descending("createdAt");
+	query.find().then(function(results) {
+		for (var i = 0; i < results.length; i++) {
+			// Find records that over FILES_OLDER_THAN_DAYS days old;
+			if (moment().diff(moment(results[i].createdAt), 'days') > FILES_OLDER_THAN_DAYS) {
+				SFDItodelete.push(results[i]);
+				console.log("SFDI_UPLOADED createdAt [" + results[i].createdAt + "] is more than " + FILES_OLDER_THAN_DAYS + " days old - to be deleted");
+			}
+		}
+		count = SFDItodelete.length;
+		
+		// Remove those records that meet the criteria
+		return Parse.Object.destroyAll(SFDItodelete);
+	}).then(function() {
+		console.log('Count of SFDI_UPLOADED records that have been deleted is ' + count);
+		response.success(result);
+	}, function(error) {
+		console.error("Got an error in destroyAll() " + error.code + " : " + error.message);
+		response.error("Got an error in destroyAll()");
+	});
+});
+
 //Send an email for SingleFDI_Trial product to the State Control Team mail list.
 Parse.Cloud.define("sendSingleFDIEmailToUsers", function(request, response) {
 	var rawStrToday = request.params.dateString;	// in the format of "%d_%m_%Y"
