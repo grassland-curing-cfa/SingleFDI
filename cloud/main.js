@@ -99,6 +99,7 @@ Parse.Cloud.beforeDelete("FLA_UPLOADED", function(request, response) {
 /**
  * Remove the SFDI_UPLOADED records that are more than 7 days old after a new record is inserted
  */
+ /*
 Parse.Cloud.afterSave("SFDI_UPLOADED", function(request) {
 	var SFDItodelete = [];
 	var count = 0;
@@ -123,6 +124,7 @@ Parse.Cloud.afterSave("SFDI_UPLOADED", function(request) {
 		console.error("Got an error in destroyAll() " + error.code + " : " + error.message);
 	});	
 });
+*/
 
 /**
  * Remove the FLA_UPLOADED records that are more than 7 days old after a new record is inserted
