@@ -175,7 +175,7 @@ Parse.Cloud.define("deleteOldSFDI", function(request, response) {
 		return Parse.Object.destroyAll(SFDItodelete);
 	}).then(function() {
 		console.log('Count of SFDI_UPLOADED records that have been deleted is ' + count);
-		response.success();
+		response.success(true);
 	}, function(error) {
 		console.error("Got an error in destroyAll() " + error.code + " : " + error.message);
 		response.error("Got an error in destroyAll()");
