@@ -210,7 +210,7 @@ Parse.Cloud.define("sendSingleFDIEmailToUsers", function(request, response) {
 					'</head>' + 
 					'<body>' + 
 					//'<p>Hello %recipient%,</p>' + 
-					'<p>Hello All,</p>' + 
+					'<p>Hello all,</p>' + 
 					'<br>' + 
 					'<p>The Single FDI trial report has been updated ' + strToday + '. To view the report, please click the link <a href="' + sfdiUploadedUrl + '" target="_top">here</a>.</p>' + 
 					'<br>' + 
@@ -318,7 +318,7 @@ Parse.Cloud.define("sendFuelLoadAmendmentsEmailToUsers", function(request, respo
 					'</head>' + 
 					'<body>' + 
 					//'<p>Hello %recipient%,</p>' + 
-					'<p>Hello All,</p>' + 
+					'<p>Hello all,</p>' + 
 					'<br>' + 
 					'<p>The Fuel Load Amendments trial report has been updated ' + strToday + '. To view the report, please click the link <a href="' + flaUploadedUrl + '" target="_top">here</a>.</p>' + 
 					'<br>' + 
