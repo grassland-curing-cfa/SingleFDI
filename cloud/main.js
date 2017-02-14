@@ -209,12 +209,16 @@ Parse.Cloud.define("sendSingleFDIEmailToUsers", function(request, response) {
 					'</style>' + 
 					'</head>' + 
 					'<body>' + 
-					//'<p>Hello %recipient%,</p>' + 
-					'<p>Hello all,</p>' + 
+					'<p>Hello %recipient%,</p>' + 
+					//'<p>Hello all,</p>' + 
 					'<br>' + 
-					'<p>The Single FDI trial report has been updated ' + strToday + '. To view the report, please click the link <a href="' + sfdiUploadedUrl + '" target="_top">here</a>.</p>' + 
+					'<p>For your information, the daily <strong>Fuel Based FDI Trial Report</strong> has been updated ' + strToday + '. To view the report, please click the link <a href="' + sfdiUploadedUrl + '" target="_top">here</a>.' + 
 					'<br>' + 
-					'<p>Please note: If the report does not display properly in your web browser, please save it to your desktop and view directly using Acrobat Reader.</p>' + 
+					'Please note: the updated report will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 7.45 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Vic Briefings & Outlooks" and find the report.' + 
+					'<br>' + 
+					'<p>If the report does not display properly in your web browser, please save it to your computer and view directly using Acrobat Reader.</p>' + 
+					'<br>' + 
+					'<p>This email will continue on a daily basis. If you would prefer to be removed from the email list, please let us know.</p>' + 
 					'<br>' + 
 					'<p>Kind Regards,</p>' + 
 					'<p>The NEMP Grassland Curing Team</p>' + 
