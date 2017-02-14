@@ -218,8 +218,6 @@ Parse.Cloud.define("sendSingleFDIEmailToUsers", function(request, response) {
 					'<br>' + 
 					'<p>If the report does not display properly in your web browser, please save it to your computer and view directly using Acrobat Reader.</p>' + 
 					'<br>' + 
-					'<p>This email will continue on a daily basis. If you would prefer to be removed from the email list, please let us know.</p>' + 
-					'<br>' + 
 					'<p>Kind Regards,</p>' + 
 					'<p>The NEMP Grassland Curing Team</p>' + 
 					'<br>' + 
