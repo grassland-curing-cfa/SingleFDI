@@ -212,9 +212,9 @@ Parse.Cloud.define("sendSingleFDIEmailToUsers", function(request, response) {
 					'<p>Hello %recipient%,</p>' + 
 					//'<p>Hello all,</p>' + 
 					'<br>' + 
-					'<p>For your information, the daily <strong>Fuel Based FDI Trial Report</strong> has been updated ' + strToday + '. To view the report, please click the link <a href="' + sfdiUploadedUrl + '" target="_top">here</a>.' + 
+					'<p>For your information, the daily <strong>Fuel Based FDI Trial Report</strong> has been updated ' + strToday + '. To view the report (file size: approx. 10 MB), please click the link <a href="' + sfdiUploadedUrl + '" target="_top">here</a>.</p>' + 
 					'<br>' + 
-					'Please note: the updated report will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 7.45 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Vic Briefings & Outlooks" and find the report.' + 
+					'<p>Please note: the updated report will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 7.45 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Vic Briefings & Outlooks" and find the report.</p>' + 
 					'<br>' + 
 					'<p>If the report does not display properly in your web browser, please save it to your computer and view directly using Acrobat Reader.</p>' + 
 					'<br>' + 
