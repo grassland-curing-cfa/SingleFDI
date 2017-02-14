@@ -225,7 +225,6 @@ Parse.Cloud.define("sendSingleFDIEmailToUsers", function(request, response) {
 					'<td><p style="color:#C00000; font-weight: bold;">NEMP Grassland Curing Team</p><p>CFA HQ - Fire & Emergency Management</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
 					'<p>E: <a href="mailto:' + CFA_NEMP_EMAIL + '" target="_top">' + CFA_NEMP_EMAIL + '</a></p></td></tr></table>' + 
 					'<br>' + 
-					'<p><i>Note: This email has been automatically generated. Please do not reply to this email.</i></p>' + 
 					'</body>' + 
 					'</html>';
 		
