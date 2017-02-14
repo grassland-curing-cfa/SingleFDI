@@ -209,7 +209,7 @@ Parse.Cloud.define("sendSingleFDIEmailToUsers", function(request, response) {
 					'</style>' + 
 					'</head>' + 
 					'<body>' + 
-					'<p>Hello %recipient%,</p>' + 
+					'<p>Hello %recipient_fname%,</p>' + 
 					//'<p>Hello all,</p>' + 
 					'<br>' + 
 					'<p>For your information, the daily <strong>Fuel Based FDI Trial Report</strong> has been updated ' + strToday + '. To view the report (file size: approx. 10 MB), please click the link <a href="' + sfdiUploadedUrl + '" target="_top">here</a>.</p>' + 
