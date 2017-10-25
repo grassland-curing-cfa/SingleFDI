@@ -64,6 +64,70 @@ Parse.Cloud.beforeDelete("SFDI_UPLOADED", function(request, response) {
 });
 
 /**
+ * Removes the associated file uploaded before the "FuelBasedFDR_ICC" record is deleted
+ */
+Parse.Cloud.beforeDelete("FuelBasedFDR_ICC", function(request, response) {
+	// Checks if "UploadedFile" has a value
+	if (request.object.has("UploadedFile")) {
+
+	    var file = request.object.get("UploadedFile");
+	    var fileName = file.name();
+	    console.log(file.name());
+	    Parse.Cloud.httpRequest({
+	    	method: 'DELETE',
+	        url: SERVER_URL + "/files/" + fileName,
+	        headers: {
+	        	"X-Parse-Application-Id": APP_ID,
+	        	"X-Parse-Master-Key" : MASTER_KEY
+	        },
+	        success: function(httpResponse) {
+	        	console.log('Deleted the file associated with the FuelBasedFDR_ICC record successfully.');
+	        	response.success();
+	        },
+	        error: function(httpResponse) {
+	        	console.error('Delete failed with response code ' + httpResponse.status + ':' + httpResponse.text);
+	        	response.error()
+	        }
+	    });
+	} else {
+		console.log('FuelBasedFDR_ICC object to be deleted does not have an associated UploadedFile (File). No UploadedFile to be deleted.');
+		response.success();
+	}
+});
+
+/**
+ * Removes the associated file uploaded before the "FuelBasedFDR_LGA" record is deleted
+ */
+Parse.Cloud.beforeDelete("FuelBasedFDR_LGA", function(request, response) {
+	// Checks if "UploadedFile" has a value
+	if (request.object.has("UploadedFile")) {
+
+	    var file = request.object.get("UploadedFile");
+	    var fileName = file.name();
+	    console.log(file.name());
+	    Parse.Cloud.httpRequest({
+	    	method: 'DELETE',
+	        url: SERVER_URL + "/files/" + fileName,
+	        headers: {
+	        	"X-Parse-Application-Id": APP_ID,
+	        	"X-Parse-Master-Key" : MASTER_KEY
+	        },
+	        success: function(httpResponse) {
+	        	console.log('Deleted the file associated with the FuelBasedFDR_LGA record successfully.');
+	        	response.success();
+	        },
+	        error: function(httpResponse) {
+	        	console.error('Delete failed with response code ' + httpResponse.status + ':' + httpResponse.text);
+	        	response.error()
+	        }
+	    });
+	} else {
+		console.log('FuelBasedFDR_LGA object to be deleted does not have an associated UploadedFile (File). No UploadedFile to be deleted.');
+		response.success();
+	}
+});
+
+/**
  * Removes the associated file uploaded before the "FLA_UPLOADED" record is deleted
  */
 Parse.Cloud.beforeDelete("FLA_UPLOADED", function(request, response) {
@@ -90,7 +154,7 @@ Parse.Cloud.beforeDelete("FLA_UPLOADED", function(request, response) {
 	        }
 	    });
 	} else {
-		console.log('UPLOADED object to be deleted does not have an associated UploadedFile (File). No UploadedFile to be deleted.');
+		console.log('FLA_UPLOADED object to be deleted does not have an associated UploadedFile (File). No UploadedFile to be deleted.');
 		response.success();
 	}
 });
@@ -175,6 +239,62 @@ Parse.Cloud.define("deleteOldSFDI", function(request, response) {
 		return Parse.Object.destroyAll(SFDItodelete);
 	}).then(function() {
 		console.log('Count of SFDI_UPLOADED records that have been deleted is ' + count);
+		response.success(true);
+	}, function(error) {
+		console.error("Got an error in destroyAll() " + error.code + " : " + error.message);
+		response.error("Got an error in destroyAll()");
+	});
+});
+
+// Remove the FuelBasedFDR_ICC records that are more than 7 days old after a new record is inserted 
+Parse.Cloud.define("deleteOldFuelBasedFDRICC", function(request, response) {
+	var SFDItodelete = [];
+	var count = 0;
+	
+	query = new Parse.Query("FuelBasedFDR_ICC");
+	query.descending("createdAt");
+	query.find().then(function(results) {
+		for (var i = 0; i < results.length; i++) {
+			// Find records that over FILES_OLDER_THAN_DAYS days old;
+			if (moment().diff(moment(results[i].createdAt), 'days') > FILES_OLDER_THAN_DAYS) {
+				SFDItodelete.push(results[i]);
+				console.log("FuelBasedFDR_ICC createdAt [" + results[i].createdAt + "] is more than " + FILES_OLDER_THAN_DAYS + " days old - to be deleted");
+			}
+		}
+		count = SFDItodelete.length;
+		
+		// Remove those records that meet the criteria
+		return Parse.Object.destroyAll(SFDItodelete);
+	}).then(function() {
+		console.log('Count of FuelBasedFDR_ICC records that have been deleted is ' + count);
+		response.success(true);
+	}, function(error) {
+		console.error("Got an error in destroyAll() " + error.code + " : " + error.message);
+		response.error("Got an error in destroyAll()");
+	});
+});
+
+// Remove the FuelBasedFDR_LGA records that are more than 7 days old after a new record is inserted 
+Parse.Cloud.define("deleteOldFuelBasedFDRLGA", function(request, response) {
+	var SFDItodelete = [];
+	var count = 0;
+	
+	query = new Parse.Query("FuelBasedFDR_LGA");
+	query.descending("createdAt");
+	query.find().then(function(results) {
+		for (var i = 0; i < results.length; i++) {
+			// Find records that over FILES_OLDER_THAN_DAYS days old;
+			if (moment().diff(moment(results[i].createdAt), 'days') > FILES_OLDER_THAN_DAYS) {
+				SFDItodelete.push(results[i]);
+				console.log("FuelBasedFDR_LGA createdAt [" + results[i].createdAt + "] is more than " + FILES_OLDER_THAN_DAYS + " days old - to be deleted");
+			}
+		}
+		count = SFDItodelete.length;
+		
+		// Remove those records that meet the criteria
+		return Parse.Object.destroyAll(SFDItodelete);
+	}).then(function() {
+		console.log('Count of FuelBasedFDR_LGA records that have been deleted is ' + count);
 		response.success(true);
 	}, function(error) {
 		console.error("Got an error in destroyAll() " + error.code + " : " + error.message);
