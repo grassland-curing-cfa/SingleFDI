@@ -316,6 +316,10 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 	var queryICC = new Parse.Query("FuelBasedFDR_ICC");
 	queryICC.descending("createdAt");
 	queryICC.find().then(function(results) {
+		if (results.length < 1) {
+			return Parse.Promise.error("There was zero FuelBasedFDR_ICC record found. The sendFuelBasedFDREmailToUsers function terminated here.");
+		}
+
 		// results is array of FuelBasedFDR_ICC records
 		// We only care about the most recent one
 		var iccUploaded = results[0];
@@ -331,6 +335,10 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 		console.log("There was an error in finding FuelBasedFDR_ICC.");
 		return Parse.Promise.error("There was an error in finding FuelBasedFDR_ICC.");
 	}).then(function(results) {
+		if (results.length < 1) {
+			return Parse.Promise.error("There was zero FuelBasedFDR_LGA record found. The sendFuelBasedFDREmailToUsers function terminated here.");
+		}
+
 		// results is array of FuelBasedFDR_LGA records
 		// We only care about the most recent one
 		var lgaUploaded = results[0];
@@ -409,7 +417,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 			console.log("The Email was not sent. Reason: Unable to find either FuelBasedFDR_ICC or FuelBasedFDR_LGA. iccUploadedURL = " + iccUploadedURL + "; igaUploadedURL = " + igaUploadedURL)
 		}
 	}, function(error) {
-		response.error("Error: " + error.code + " " + error.message);
+		response.error("Error: " + error.code + " - " + error.message);
 	});
 
 });
