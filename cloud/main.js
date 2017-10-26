@@ -405,6 +405,8 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 				}
 			});
 			//
+		} else {
+			console.log("The Email was not sent. Reason: Unable to find either FuelBasedFDR_ICC or FuelBasedFDR_LGA. iccUploadedURL = " + iccUploadedURL + "; igaUploadedURL = " + igaUploadedURL)
 		}
 	}, function(error) {
 		response.error("Error: " + error.code + " " + error.message);
