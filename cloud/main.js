@@ -17,12 +17,13 @@ var APP_NAME = process.env.APP_NAME;
 
 var MG_DOMAIN = process.env.MG_DOMAIN;
 var MG_KEY = process.env.MG_KEY;
-var MG_MAIL_LIST_NAME = process.env.MG_MAIL_LIST_NAME
-var MG_FLA_MAIL_LIST_NAME = process.env.MG_FLA_MAIL_LIST_NAME
-var MG_SFDI_MAIL_SUBJUST_PREFIX = process.env.MG_SFDI_MAIL_SUBJUST_PREFIX
-var MG_FLA_MAIL_SUBJUST_PREFIX = process.env.MG_FLA_MAIL_SUBJUST_PREFIX
-var MG_FB_MAIL_SUBJUST_PREFIX =  process.env.MG_FB_MAIL_SUBJUST_PREFIX
+var MG_MAIL_LIST_NAME = process.env.MG_MAIL_LIST_NAME;
+var MG_FLA_MAIL_LIST_NAME = process.env.MG_FLA_MAIL_LIST_NAME;
+var MG_SFDI_MAIL_SUBJUST_PREFIX = process.env.MG_SFDI_MAIL_SUBJUST_PREFIX;
+var MG_FLA_MAIL_SUBJUST_PREFIX = process.env.MG_FLA_MAIL_SUBJUST_PREFIX;
+var MG_FB_MAIL_SUBJUST_PREFIX =  process.env.MG_FB_MAIL_SUBJUST_PREFIX;
 var CFA_NEMP_EMAIL = process.env.EMAIL_ADDR_CFA_NEMP;
+var CFA_GC_TEAM_EMAIL = process.env.EMAIL_ADDR_CFA_GC_TEAM;
 
 var FILES_OLDER_THAN_DAYS = process.env.FILES_OLDER_THAN_DAYS
 
@@ -366,11 +367,11 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<p>If the reports do not display properly in your web browser, please save it to your computer and view directly using Acrobat Reader.</p>' + 
 						'<br>' + 
 						'<p>Kind Regards,</p>' + 
-						'<p>The NEMP Grassland Curing Team</p>' + 
+						'<p>The CFA Grassland Curing Team</p>' + 
 						'<br>' + 
 						'<table><tr><td width="25%"><img src="http://www.cfa.vic.gov.au/img/logo.png" width="64" height="64" alt="CFA_LOGO" /></td>' + 
-						'<td><p style="color:#C00000; font-weight: bold;">NEMP Grassland Curing Team</p><p>CFA HQ - Fire & Emergency Management</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
-						'<p>E: <a href="mailto:' + CFA_NEMP_EMAIL + '" target="_top">' + CFA_NEMP_EMAIL + '</a></p></td></tr></table>' + 
+						'<td><p style="color:#C00000; font-weight: bold;">CFA Grassland Curing Team</p><p>CFA HQ - Fire & Emergency Management</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
+						'<p>E: <a href="mailto:' + CFA_GC_TEAM_EMAIL + '" target="_top">' + CFA_GC_TEAM_EMAIL + '</a></p></td></tr></table>' + 
 						'<br>' + 
 						'</body>' + 
 						'</html>';
@@ -380,7 +381,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 			var data = {
 				to: MG_MAIL_LIST_NAME,
 				//cc: CFA_NEMP_EMAIL,
-				from: CFA_NEMP_EMAIL,
+				from: CFA_GC_TEAM_EMAIL,
 				subject: MG_FB_MAIL_SUBJUST_PREFIX + strToday,
 				text: "",
 				html: htmlString
