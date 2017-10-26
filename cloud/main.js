@@ -362,7 +362,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<li><a href="' + igaUploadedURL + '" target="_top">Fuel Based FDR for each LGA (TRIAL)</a> (file size: approx. 10 MB)</li>' +
 						'</ul>' + 
 						'<br>' + 
-						'<p>Please note: the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 7.45 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Vic Briefings & Outlooks" and find the report.</p>' + 
+						'<p>Please note: the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 7.45 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Vic Briefings & Outlooks" and find the reports.</p>' + 
 						'<br>' + 
 						'<p>If the reports do not display properly in your web browser, please save it to your computer and view directly using Acrobat Reader.</p>' + 
 						'<br>' + 
