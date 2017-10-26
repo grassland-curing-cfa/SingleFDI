@@ -316,7 +316,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 	var queryICC = new Parse.Query("FuelBasedFDR_ICC");
 	queryICC.descending("createdAt");
 	queryICC.find().then(function(results) {
-		console.log("results.length=" + results.length);
+		console.log("FuelBasedFDR_ICC results.length=" + results.length);
 		if (results.length < 1) {
 			return Parse.Promise.error("There was zero FuelBasedFDR_ICC record found. The sendFuelBasedFDREmailToUsers function terminated here.");
 		}
@@ -336,6 +336,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 		console.log("There was an error in finding FuelBasedFDR_ICC.");
 		return Parse.Promise.error("There was an error in finding FuelBasedFDR_ICC.");
 	}).then(function(results) {
+		console.log("FuelBasedFDR_LGA results.length=" + results.length);
 		if (results.length < 1) {
 			return Parse.Promise.error("There was zero FuelBasedFDR_LGA record found. The sendFuelBasedFDREmailToUsers function terminated here.");
 		}
@@ -420,7 +421,6 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 	}, function(error) {
 		response.error("Error: " + error.code + " " + error.message);
 	});
-
 });
 
 //Send an email for SingleFDI_Trial product to the State Control Team mail list.
