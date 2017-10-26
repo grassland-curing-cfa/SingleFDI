@@ -21,6 +21,7 @@ var MG_MAIL_LIST_NAME = process.env.MG_MAIL_LIST_NAME
 var MG_FLA_MAIL_LIST_NAME = process.env.MG_FLA_MAIL_LIST_NAME
 var MG_SFDI_MAIL_SUBJUST_PREFIX = process.env.MG_SFDI_MAIL_SUBJUST_PREFIX
 var MG_FLA_MAIL_SUBJUST_PREFIX = process.env.MG_FLA_MAIL_SUBJUST_PREFIX
+var MG_FB_MAIL_SUBJUST_PREFIX =  process.env.MG_FB_MAIL_SUBJUST_PREFIX
 var CFA_NEMP_EMAIL = process.env.EMAIL_ADDR_CFA_NEMP;
 
 var FILES_OLDER_THAN_DAYS = process.env.FILES_OLDER_THAN_DAYS
@@ -300,6 +301,110 @@ Parse.Cloud.define("deleteOldFuelBasedFDRLGA", function(request, response) {
 		console.error("Got an error in destroyAll() " + error.code + " : " + error.message);
 		response.error("Got an error in destroyAll()");
 	});
+});
+
+//Send an email for Fuel-based FDR products (ICC and LGA Trial products) to the State Control Team mail list.
+Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
+	var rawStrToday = request.params.dateString;	// in the format of "%d_%m_%Y"
+	var strToday = rawStrToday.replace(/_/g, '/');
+
+	var iccUploadedURL = null;
+	var igaUploadedURL = null;
+	
+	// Query FuelBasedFDR_ICC class
+	var queryICC = new Parse.Query("FuelBasedFDR_ICC");
+	queryICC.descending("createdAt");
+	queryICC.find().then(function(results) {
+		// results is array of FuelBasedFDR_ICC records
+		// We only care about the most recent one
+		var iccUploaded = results[0];
+		iccUploadedURL = iccUploaded.get("UploadedFileUrl");
+		
+		console.log("The most recent FuelBasedFDR_ICC uploaded file Url: " + iccUploadedURL)
+
+		// Query FuelBasedFDR_LGA class
+		var queryLGA = new Parse.Query("FuelBasedFDR_LGA");
+		queryLGA.descending("createdAt");
+		return queryLGA.find();
+	}, function(error) {
+		console.log("There was an error in finding FuelBasedFDR_ICC.");
+		return Parse.Promise.error("There was an error in finding FuelBasedFDR_ICC.");
+	}).then(function(results) {
+		// results is array of FuelBasedFDR_LGA records
+		// We only care about the most recent one
+		var lgaUploaded = results[0];
+		igaUploadedURL = lgaUploaded.get("UploadedFileUrl");
+		
+		console.log("The most recent FuelBasedFDR_LGA uploaded file Url: " + igaUploadedURL)
+
+		// Send the email only when neither ICC nor IGA is null or undefined.
+		if ( (iccUploadedURL) && (igaUploadedURL) ) {
+			//
+			// use Mailgun to send email
+			var mailgun = require('mailgun-js')({apiKey: MG_KEY, domain: MG_DOMAIN});
+			
+			var htmlString = 
+						'<!DOCTYPE html><html>' + 
+						'<head>' + 
+						'<title>Fuel Based FDR products</title>' + 
+						'<style>' + 
+						'p, li {margin:0cm; margin-bottom:.0001pt; font-size:11.0pt; font-family:"Calibri","sans-serif";}' + 
+						'</style>' + 
+						'</head>' + 
+						'<body>' + 
+						'<p>Hello %recipient_fname%,</p>' + 
+						//'<p>Hello all,</p>' + 
+						'<br>' + 
+						'<p>For your information, the daily <strong>Fuel Based FDR products</strong> have been updated ' + strToday + '. To view the report (file size: approx. 10 MB), please click the links <a href="' + iccUploadedURL + '" target="_top">ICC</a> and <a href="' + igaUploadedURL + '" target="_top">LGA</a>.</p>' + 
+						'<br>' + 
+						'<p>Please note: the updated report will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 7.45 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Vic Briefings & Outlooks" and find the report.</p>' + 
+						'<br>' + 
+						'<p>If the report does not display properly in your web browser, please save it to your computer and view directly using Acrobat Reader.</p>' + 
+						'<br>' + 
+						'<p>Kind Regards,</p>' + 
+						'<p>The NEMP Grassland Curing Team</p>' + 
+						'<br>' + 
+						'<table><tr><td width="25%"><img src="http://www.cfa.vic.gov.au/img/logo.png" width="64" height="64" alt="CFA_LOGO" /></td>' + 
+						'<td><p style="color:#C00000; font-weight: bold;">NEMP Grassland Curing Team</p><p>CFA HQ - Fire & Emergency Management</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
+						'<p>E: <a href="mailto:' + CFA_NEMP_EMAIL + '" target="_top">' + CFA_NEMP_EMAIL + '</a></p></td></tr></table>' + 
+						'<br>' + 
+						'</body>' + 
+						'</html>';
+			
+			var result = null;
+
+			var data = {
+				to: MG_MAIL_LIST_NAME,
+				cc: CFA_NEMP_EMAIL,
+				from: CFA_NEMP_EMAIL,
+				subject: MG_FB_MAIL_SUBJUST_PREFIX + strToday,
+				text: "",
+				html: htmlString
+			};
+
+			mailgun.messages().send(data, function (error, body) {
+				if (error) {
+					console.log(error);
+					result = {
+						"result": false,
+						"details": error
+					};
+					response.error(result);
+				} else {
+					console.log(body);
+					result = {
+						"result": true,
+						"details": JSON.stringify(body)
+					};
+					response.success(result);
+				}
+			});
+			//
+		}
+	}, function(error) {
+		response.error("Error: " + error.code + " " + error.message);
+	});
+
 });
 
 //Send an email for SingleFDI_Trial product to the State Control Team mail list.
