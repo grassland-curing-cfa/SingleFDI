@@ -316,6 +316,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 	var queryICC = new Parse.Query("FuelBasedFDR_ICC");
 	queryICC.descending("createdAt");
 	queryICC.find().then(function(results) {
+		console.log("results.length=" + results.length);
 		if (results.length < 1) {
 			return Parse.Promise.error("There was zero FuelBasedFDR_ICC record found. The sendFuelBasedFDREmailToUsers function terminated here.");
 		}
