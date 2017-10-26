@@ -346,7 +346,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 			var htmlString = 
 						'<!DOCTYPE html><html>' + 
 						'<head>' + 
-						'<title>Fuel Based FDR products</title>' + 
+						'<title>Fuel Based FDR reports</title>' + 
 						'<style>' + 
 						'p, li {margin:0cm; margin-bottom:.0001pt; font-size:11.0pt; font-family:"Calibri","sans-serif";}' + 
 						'</style>' + 
@@ -355,11 +355,15 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<p>Hello %recipient_fname%,</p>' + 
 						//'<p>Hello all,</p>' + 
 						'<br>' + 
-						'<p>For your information, the daily <strong>Fuel Based FDR products</strong> have been updated ' + strToday + '. To view the report (file size: approx. 10 MB), please click the links <a href="' + iccUploadedURL + '" target="_top">ICC</a> and <a href="' + igaUploadedURL + '" target="_top">LGA</a>.</p>' + 
+						'<p>For your information, the daily <strong>Fuel Based FDR reports</strong> have been updated ' + strToday + '. Please click the following links:</p>' + 
+						'<ul>' +
+						'<li><a href="' + iccUploadedURL + '" target="_top">Fuel Based FDR for each ICC Footprint</a> (file size: approx. 7 MB), and</li>' +
+						'<li><a href="' + igaUploadedURL + '" target="_top">Fuel Based FDR for each LGA (TRIAL)</a> (file size: approx. 10 MB)</li>' +
+						'</ul>' + 
 						'<br>' + 
-						'<p>Please note: the updated report will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 7.45 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Vic Briefings & Outlooks" and find the report.</p>' + 
+						'<p>Please note: the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 7.45 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Vic Briefings & Outlooks" and find the report.</p>' + 
 						'<br>' + 
-						'<p>If the report does not display properly in your web browser, please save it to your computer and view directly using Acrobat Reader.</p>' + 
+						'<p>If the reports do not display properly in your web browser, please save it to your computer and view directly using Acrobat Reader.</p>' + 
 						'<br>' + 
 						'<p>Kind Regards,</p>' + 
 						'<p>The NEMP Grassland Curing Team</p>' + 
