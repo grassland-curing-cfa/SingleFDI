@@ -379,7 +379,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 
 			var data = {
 				to: MG_MAIL_LIST_NAME,
-				cc: CFA_NEMP_EMAIL,
+				//cc: CFA_NEMP_EMAIL,
 				from: CFA_NEMP_EMAIL,
 				subject: MG_FB_MAIL_SUBJUST_PREFIX + strToday,
 				text: "",
