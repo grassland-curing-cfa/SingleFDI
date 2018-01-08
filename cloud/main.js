@@ -382,18 +382,18 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<li><a href="http://cfavic.maps.arcgis.com/apps/webappviewer/index.html?id=1e85c95c4b9c480e89a245e2197f4374" target="_top">Interactive Map for LGAs (TRIAL)</a></li>' +
 						'</ul>' + 
 						'<br>' + 
-						'You can click on <img border=0 width=37 height=36 src="https://s3.amazonaws.com/bushfire-shared-images/timeWidget.png" alt="timeWidget"> to turn on/off the time slider. Once it is activated, the animation is started and a time widget is shown as below as you can see the change in FDR starting with today (Day 0) over a four day period. You can pause and re-play from the widget. You can also pause the animation and scroll the time slider bar to the date you wish to view.' + 
+						'<p>You can click on <img border=0 width=37 height=36 src="https://s3.amazonaws.com/bushfire-shared-images/timeWidget.png" alt="timeWidget"> to turn on/off the time slider. Once it is activated, the animation is started and a time widget is shown as below as you can see the change in FDR starting with today (Day 0) over a four day period. You can pause and re-play from the widget. You can also pause the animation and scroll the time slider bar to the date you wish to view.</p>' + 
 						'<br>' + 
-						'<img border=0 width=375 height=79 src="https://s3.amazonaws.com/bushfire-shared-images/timeSlider.png" alt="timeSlider">' + 
+						'<p><img border=0 width=375 height=79 src="https://s3.amazonaws.com/bushfire-shared-images/timeSlider.png" alt="timeSlider"></p>' + 
 						'<br>' + 
 						'<p>There are a list other functions on the Toolbar you may want to play with.</p>' + 
 						'<ul>' +
-						'<li><img border=0 width=32 height=32 src="https://s3.amazonaws.com/bushfire-shared-images/layerswitcher.png" alt="layerswitcher"> Switch on/off layers to make it visible/invisible on the map</li>' +
-						'<li><img border=0 width=31 height=29 src="https://s3.amazonaws.com/bushfire-shared-images/showLegend.jpg" alt="showLegend"> Show legend</li>' +
-						'<li><img border=0 width=30 height=29 src="https://s3.amazonaws.com/bushfire-shared-images/print.jpg" alt="print"> Print</li>' +
-						'<li><img border=0 width=31 height=27 src="https://s3.amazonaws.com/bushfire-shared-images/drawGraphics.jpg" alt="drawGraphics"> Draw graphics</li>' +
-						'<li><img border=0 width=31 height=28 src="https://s3.amazonaws.com/bushfire-shared-images/shareURL.jpg" alt="shareURL"> Generate a URL for sharing the web app with others</li>' +
-						'<li><img border=0 width=31 height=28 src="https://s3.amazonaws.com/bushfire-shared-images/runQuery.jpg" alt="runQuery"> Run pre-defined query functions on either individual days or a particular LGA/ICC</li>' +
+						'<li><p><img border=0 width=32 height=32 src="https://s3.amazonaws.com/bushfire-shared-images/layerswitcher.png" alt="layerswitcher"> Switch on/off layers to make it visible/invisible on the map</p></li>' +
+						'<li><p><img border=0 width=31 height=29 src="https://s3.amazonaws.com/bushfire-shared-images/showLegend.jpg" alt="showLegend"> Show legend</p></li>' +
+						'<li><p><img border=0 width=30 height=29 src="https://s3.amazonaws.com/bushfire-shared-images/print.jpg" alt="print"> Print</p></li>' +
+						'<li><p><img border=0 width=31 height=27 src="https://s3.amazonaws.com/bushfire-shared-images/drawGraphics.jpg" alt="drawGraphics"> Draw graphics</li>' +
+						'<li><p><img border=0 width=31 height=28 src="https://s3.amazonaws.com/bushfire-shared-images/shareURL.jpg" alt="shareURL"> Generate a URL for sharing the web app with others</p></li>' +
+						'<li><p><img border=0 width=31 height=28 src="https://s3.amazonaws.com/bushfire-shared-images/runQuery.jpg" alt="runQuery"> Run pre-defined query functions on either individual days or a particular LGA/ICC</p></li>' +
 						'</ul>' + 
 						'<br>' + 
 						'<p>Kind Regards,</p>' + 
