@@ -378,7 +378,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<br>' + 
 						'<p>You can click the links below to view the interactive web maps that will be opened in your web browser.</p>' + 
 						'<ul>' +
-						'<li><a href="http://cfavic.maps.arcgis.com/apps/webappviewer/index.html?id=4c6089ac42774bd38519f0c43cb1bd41" target="_top">Interactive Map for ICC Footprints (TRIAL)</a>, and</li>' +
+						'<li><a href="http://cfavic.maps.arcgis.com/apps/webappviewer/index.html?id=4c6089ac42774bd38519f0c43cb1bd41" target="_top">Interactive Map for ICC Footprints</a>, and</li>' +
 						'<li><a href="http://cfavic.maps.arcgis.com/apps/webappviewer/index.html?id=1e85c95c4b9c480e89a245e2197f4374" target="_top">Interactive Map for LGAs (TRIAL)</a></li>' +
 						'</ul>' + 
 						'<br>' + 
