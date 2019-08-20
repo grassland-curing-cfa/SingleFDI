@@ -5,6 +5,7 @@
  * Git repo: 				https://github.com/grassland-curing-cfa/SingleFDI
  * Initial checkin date:	27/10/2016
  * Following-up check date:	13/12/2016: NEMP-1-151: Remove unnecessary Parse.User.logIn(SUPERUSER, SUPERPASSWORD) and Parse.Cloud.useMasterKey() in the Cloud function
+ *
  */
 
 var _ = require('underscore');
