@@ -375,30 +375,8 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<br>' + 
 						'<p>Please note that the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 7.30 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Vic Briefings & Outlooks" and find the reports.</p>' + 
 						'<br>' + 
-						'<p>In addition to the PDF reports, the research and development team have developed an interactive web map, which allows you to see the spatial forecast with a time slider, and zoom in and query features.</p>' + 
-						'<br>' + 
-						'<p>You can click the links below to view the interactive web maps that will be opened in your web browser.</p>' + 
-						'<ul>' +
-						'<li><a href="http://cfavic.maps.arcgis.com/apps/webappviewer/index.html?id=4c6089ac42774bd38519f0c43cb1bd41" target="_top">Interactive Map for ICC Footprints</a>, and</li>' +
-						'<li><a href="http://cfavic.maps.arcgis.com/apps/webappviewer/index.html?id=1e85c95c4b9c480e89a245e2197f4374" target="_top">Interactive Map for LGAs (TRIAL)</a></li>' +
-						'</ul>' + 
-						'<br>' + 
-						'<p>You can click on <img border=0 width=37 height=36 src="https://s3.amazonaws.com/bushfire-shared-images/timeWidget.png" alt="timeWidget"> to turn on/off the time slider. Once it is activated, the animation is started and a time widget is shown as below as you can see the change in FDR starting with today (Day 0) over a four day period. You can pause and re-play from the widget. You can also pause the animation and scroll the time slider bar to the date you wish to view.</p>' + 
-						'<br>' + 
-						'<p><img border=0 width=375 height=79 src="https://s3.amazonaws.com/bushfire-shared-images/timeSlider.png" alt="timeSlider"></p>' + 
-						'<br>' + 
-						'<p>There are a list other functions on the Toolbar you may want to play with.</p>' + 
-						'<ul>' +
-						'<li><p><img border=0 width=32 height=32 src="https://s3.amazonaws.com/bushfire-shared-images/layerswitcher.png" alt="layerswitcher"> Switch on/off layers to make it visible/invisible on the map</p></li>' +
-						'<li><p><img border=0 width=31 height=29 src="https://s3.amazonaws.com/bushfire-shared-images/showLegend.jpg" alt="showLegend"> Show legend</p></li>' +
-						'<li><p><img border=0 width=30 height=29 src="https://s3.amazonaws.com/bushfire-shared-images/print.jpg" alt="print"> Print</p></li>' +
-						'<li><p><img border=0 width=31 height=27 src="https://s3.amazonaws.com/bushfire-shared-images/drawGraphics.jpg" alt="drawGraphics"> Draw graphics</li>' +
-						'<li><p><img border=0 width=31 height=28 src="https://s3.amazonaws.com/bushfire-shared-images/shareURL.jpg" alt="shareURL"> Generate a URL for sharing the web app with others</p></li>' +
-						'<li><p><img border=0 width=31 height=28 src="https://s3.amazonaws.com/bushfire-shared-images/runQuery.jpg" alt="runQuery"> Run pre-defined query functions on either individual days or a particular LGA/ICC</p></li>' +
-						'</ul>' + 
-						'<br>' + 
 						'<p>Kind Regards,</p>' + 
-						'<p>The CFA Grassland Curing Team</p>' + 
+						'<p>The Bushfire Research and Development Team</p>' + 
 						'<br>' + 
 						'<table><tr><td width="25%"><img src="https://cdn.cfa.vic.gov.au/o/cfa-theme/images/cfa-logo.png" width="64" height="64" alt="CFA_LOGO" /></td>' + 
 						'<td><p style="color:#C00000; font-weight: bold;">CFA Grassland Curing Team</p><p>CFA HQ - Fire & Emergency Management</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
