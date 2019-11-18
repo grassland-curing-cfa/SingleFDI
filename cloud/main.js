@@ -30,6 +30,7 @@ var FILES_OLDER_THAN_DAYS = process.env.FILES_OLDER_THAN_DAYS
 
 //Use Parse.Cloud.define to define as many cloud functions as you want.
 //For example:
+
 Parse.Cloud.define("hello", function(request, response) {
 	response.success("Hello world from " + APP_NAME);
 });
@@ -370,7 +371,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<p>For your information, the daily <strong>Fuel Based FDR reports</strong> have been updated ' + strToday + '. Please click the following links:</p>' + 
 						'<ul>' +
 						'<li><a href="' + iccUploadedURL + '" target="_top">Fuel Based FDR for each ICC Footprint</a> (file size: approx. 7 MB), and</li>' +
-						'<li><a href="' + igaUploadedURL + '" target="_top">Fuel Based FDR for each LGA (TRIAL)</a> (file size: approx. 10 MB)</li>' +
+						'<li><a href="' + igaUploadedURL + '" target="_top">Fuel Based FDR for each LGA (AGENCY USE)</a> (file size: approx. 10 MB)</li>' +
 						'</ul>' + 
 						'<br>' + 
 						'<p>Please note that the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 7.30 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Vic Briefings & Outlooks" and find the reports.</p>' + 
