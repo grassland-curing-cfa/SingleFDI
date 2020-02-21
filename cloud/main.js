@@ -376,6 +376,16 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<br>' + 
 						'<p>Please note that the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 7.30 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Vic Briefings & Outlooks" and find the reports.</p>' + 
 						'<br>' + 
+						'<p>In addition to the PDF reports, the research and development team have developed an interactive web map, which allows you to see the spatial forecast with a time slider, and zoom in and query features.</p>' + 
+						'<br>' + 
+						'<p>You can click the links below to view the interactive web maps that will be opened in your web browser.</p>' + 
+						'<ul>' +
+						'<li><a href="https://cfavic.maps.arcgis.com/apps/webappviewer/index.html?id=7444f26aa4b34a8093ea62b8d0230299" target="_top">Interactive Map for ICC Footprints</a>, and</li>' +
+						'<li><a href="https://cfavic.maps.arcgis.com/apps/webappviewer/index.html?id=5f57eabfce7747c6be7ad30c1f667956" target="_top">Interactive Map for LGAs (AGENCY USE)</a></li>' +
+						'</ul>' + 
+						'<br>' + 
+						'<p>You can click on <img border=0 width=37 height=36 src="https://s3.amazonaws.com/bushfire-shared-images/timeWidget.png" alt="timeWidget"> to turn on/off the time slider. Once it is activated, the animation is started and a time widget is shown as below as you can see the change in FDR starting with today (Day 0) over a four day period. You can pause and re-play from the widget.' +
+ 						'<br>' + 
 						'<p>Kind Regards,</p>' + 
 						'<p>CFA Bushfire Research and Development Team</p>' + 
 						'<br>' + 
