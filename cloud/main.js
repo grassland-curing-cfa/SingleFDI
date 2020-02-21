@@ -386,6 +386,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<br>' + 
 						'<p>You can click on <img border=0 width=37 height=36 src="https://s3.amazonaws.com/bushfire-shared-images/timeWidget.png" alt="timeWidget"> to turn on/off the time slider. Once it is activated, the animation is started and a time widget is shown as below as you can see the change in FDR starting with today (Day 0) over a four day period. You can pause and re-play from the widget.' +
  						'<br>' + 
+						'<br>' + 
 						'<p>Kind Regards,</p>' + 
 						'<p>CFA Bushfire Research and Development Team</p>' + 
 						'<br>' + 
