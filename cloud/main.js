@@ -20,6 +20,7 @@ var MG_DOMAIN = process.env.MG_DOMAIN;
 var MG_KEY = process.env.MG_KEY;
 var MG_MAIL_LIST_NAME = process.env.MG_MAIL_LIST_NAME;
 var MG_FLA_MAIL_LIST_NAME = process.env.MG_FLA_MAIL_LIST_NAME;
+var MG_MAIL_LIST_NAME_FOR_AIRFIELD_PDD = process.env.MG_MAIL_LIST_NAME_FOR_AIRFIELD_PDD;
 var MG_SFDI_MAIL_SUBJUST_PREFIX = process.env.MG_SFDI_MAIL_SUBJUST_PREFIX;
 var MG_FLA_MAIL_SUBJUST_PREFIX = process.env.MG_FLA_MAIL_SUBJUST_PREFIX;
 var MG_FB_MAIL_SUBJUST_PREFIX =  process.env.MG_FB_MAIL_SUBJUST_PREFIX;
@@ -488,6 +489,100 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 			//
 		} else {
 			console.log("The Email was not sent. Reason: Unable to find either FuelBasedFDR_ICC or FuelBasedFDR_LGA. iccUploadedURL = " + iccUploadedURL + "; igaUploadedURL = " + igaUploadedURL)
+		}
+	}, function(error) {
+		response.error("Error: " + error.code + " " + error.message);
+	});
+});
+
+//Send an email for Fuel-based FDR products (PDD Airfield products).
+Parse.Cloud.define("sendFuelBasedFDRPDDEmailToUsers", function(request, response) {
+	var rawStrToday = request.params.dateString;	// in the format of "%d_%m_%Y"
+	var strToday = rawStrToday.replace(/_/g, '/');
+
+	var pddUploadedURL = null;
+	
+	// Query FuelBasedFDR_PDD class
+	var queryPDD = new Parse.Query("FuelBasedFDR_PDD");
+	queryPDD.descending("createdAt");
+	queryPDD.find().then(function(results) {
+		console.log("FuelBasedFDR_PDD results.length=" + results.length);
+		if (results.length < 1) {
+			return Parse.Promise.error("There was zero FuelBasedFDR_PDD record found. The sendFuelBasedFDRPDDEmailToUsers function stops here.");
+		}
+
+		// results is array of FuelBasedFDR_PDD recordsc
+		// We only care about the most recent one
+		var pddUploaded = results[0];
+		pddUploadedURL = pddUploaded.get("UploadedFileUrl");
+		
+		console.log("The most recent FuelBasedFDR_PDD uploaded file Url: " + pddUploadedURL)
+		
+		// Send the email only when PDD is not null or undefined.
+		if ( pddUploadedURL ) {
+			//
+			// use Mailgun to send email
+			var mailgun = require('mailgun-js')({apiKey: MG_KEY, domain: MG_DOMAIN});
+			
+			var htmlString = 
+						'<!DOCTYPE html><html>' + 
+						'<head>' + 
+						'<title>Fuel Based FDR report for Airfield PDD</title>' + 
+						'<style>' + 
+						'p, li {margin:0cm; margin-bottom:.0001pt; font-size:11.0pt; font-family:"Calibri","sans-serif";}' + 
+						'</style>' + 
+						'</head>' + 
+						'<body>' + 
+						'<p>Hello %recipient_fname%,</p>' + 
+						//'<p>Hello all,</p>' + 
+						'<br>' + 
+						'<p>For your information, the daily <strong>Fuel Based FDR report for Airfield PDD</strong> have been updated ' + strToday + '. Please click the following link:</p>' + 
+						'<ul>' +
+						'<li><a href="' + pddUploadedURL + '" target="_top">Fuel Based FDR for each Airfield PDD area</a> (file size: approx. 10 MB)</li>' +
+						'</ul>' + 
+						'<br>' + 
+						'<br>' + 
+						'<p>Kind Regards,</p>' + 
+						'<p>CFA Bushfire Research and Development Team</p>' + 
+						'<br>' + 
+						'<table><tr><td width="25%"><img src="https://cdn.cfa.vic.gov.au/o/cfa-theme/images/cfa-logo.png" width="64" height="64" alt="CFA_LOGO" /></td>' + 
+						'<td><p style="color:#C00000; font-weight: bold;">CFA Bushfire Research and Development Team</p><p>CFA HQ - Fire & Emergency Management</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
+						'<p>E: <a href="mailto:' + CFA_GC_TEAM_EMAIL + '" target="_top">' + CFA_GC_TEAM_EMAIL + '</a></p></td></tr></table>' + 
+						'<br>' + 
+						'</body>' + 
+						'</html>';
+			
+			var result = null;
+
+			var data = {
+				to: MG_MAIL_LIST_NAME_FOR_AIRFIELD_PDD,
+				//cc: CFA_NEMP_EMAIL,
+				from: CFA_GC_TEAM_EMAIL,
+				subject: MG_FB_MAIL_SUBJUST_PREFIX + "for Airfield PDD Areas " + strToday,
+				text: "",
+				html: htmlString
+			};
+
+			mailgun.messages().send(data, function (error, body) {
+				if (error) {
+					console.log(error);
+					result = {
+						"result": false,
+						"details": error
+					};
+					response.error(result);
+				} else {
+					console.log(body);
+					result = {
+						"result": true,
+						"details": JSON.stringify(body)
+					};
+					response.success(result);
+				}
+			});
+			//
+		} else {
+			console.log("The Email was not sent. Reason: Unable to find FuelBasedFDR_PDD. pddUploadedURL = " + pddUploadedURL);
 		}
 	}, function(error) {
 		response.error("Error: " + error.code + " " + error.message);
