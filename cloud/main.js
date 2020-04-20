@@ -339,7 +339,7 @@ Parse.Cloud.define("deleteOldFuelBasedFDRLGA", function(request, response) {
 });
 
 // Remove the FuelBasedFDR_PDD records that are more than 7 days old after a new record is inserted 
-Parse.Cloud.define("deleteOldFuelBasedFDRPDD, function(request, response) {
+Parse.Cloud.define("deleteOldFuelBasedFDRPDD", function(request, response) {
 	var SFDItodelete = [];
 	var count = 0;
 	
