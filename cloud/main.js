@@ -430,9 +430,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 		var pddUploaded = results[0];
 		pddUploadedURL = pddUploaded.get("UploadedFileUrl");
 		
-		console.log("The most recent FuelBasedFDR_PDD uploaded file Url: " + pddUploadedURL)
-		
-		
+		console.log("The most recent FuelBasedFDR_PDD uploaded file Url: " + pddUploadedURL)		
 		
 
 		// Send the email only when neither ICC nor IGA is null or undefined.
@@ -457,10 +455,10 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<ul>' +
 						'<li><a href="' + iccUploadedURL + '" target="_top">Fuel Based FDR for each ICC Footprint</a> (file size: approx. 7 MB), and</li>' +
 						'<li><a href="' + igaUploadedURL + '" target="_top">Fuel Based FDR for each LGA (AGENCY USE)</a> (file size: approx. 10 MB)</li>' +
-						'<li><a href="' + pddUploadedURL + '" target="_top">Fuel Based FDR for each PDD</a> (file size: approx. 10 MB)</li>' +
+						'<li><a href="' + pddUploadedURL + '" target="_top">Fuel Based FDR for each Airfield</a> (file size: approx. 10 MB)</li>' +
 						'</ul>' + 
 						'<br>' + 
-						'<p>For EM-COP users, please note that the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 8.15 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Briefings & Bulletins" and find all these reports. The PDD report is also available on "DESKTOP" -> "Sections" -> "Aviation".</p>' + 
+						'<p>For EM-COP users, please note that the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 8.15 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Briefings & Bulletins" and find the reports. The Airfield report is also available on "DESKTOP" -> "Sections" -> "Aviation".</p>' + 
 						'<br>' + 
 						//'<p>In addition to the PDF reports, the research and development team have developed an interactive web map, which allows you to see the spatial forecast with a time slider, and zoom in and query features.</p>' + 
 						//'<br>' + 
@@ -472,12 +470,11 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						//'<br>' + 
 						//'<p>You can click on <img border=0 width=37 height=36 src="https://s3.amazonaws.com/bushfire-shared-images/timeWidget.png" alt="timeWidget"> to turn on/off the time slider. Once it is activated, the animation is started and a time widget is shown as below as you can see the change in FDR starting with today (Day 0) over a four day period. You can pause and re-play from the widget.' +
  						//'<br>' + 
-						'<br>' + 
 						'<p>Kind Regards,</p>' + 
-						'<p>CFA Bushfire Research and Development Team</p>' + 
+						'<p>CFA Bushfire Research and Development</p>' + 
 						'<br>' + 
 						'<table><tr><td width="25%"><img src="https://cdn.cfa.vic.gov.au/o/cfa-theme/images/cfa-logo.png" width="64" height="64" alt="CFA_LOGO" /></td>' + 
-						'<td><p style="color:#C00000; font-weight: bold;">CFA Bushfire Research and Development Team</p><p>CFA HQ - Fire & Emergency Management</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
+						'<td><p style="color:#C00000; font-weight: bold;">CFA Bushfire Research and Development</p><p>CFA HQ - Bushfire Management</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
 						'<p>E: <a href="mailto:' + CFA_GC_TEAM_EMAIL + '" target="_top">' + CFA_GC_TEAM_EMAIL + '</a></p></td></tr></table>' + 
 						'<br>' + 
 						'</body>' + 
