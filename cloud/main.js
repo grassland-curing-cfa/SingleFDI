@@ -419,7 +419,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 	}, function(error) {
 		console.log("There was an error in finding FuelBasedFDR_LGA.");
 		return Parse.Promise.error("There was an error in finding FuelBasedFDR_LGA.");
-	).then(function(results) {
+	}).then(function(results) {
 		console.log("FuelBasedFDR_PDD results.length=" + results.length);
 		if (results.length < 1) {
 			return Parse.Promise.error("There was zero FuelBasedFDR_PDD record found. The sendFuelBasedFDREmailToUsers function terminated here.");
