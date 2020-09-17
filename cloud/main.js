@@ -374,6 +374,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 
 	var iccUploadedURL = null;
 	var igaUploadedURL = null;
+	var pddUploadedURL = NULL;
 	
 	// Query FuelBasedFDR_ICC class
 	var queryICC = new Parse.Query("FuelBasedFDR_ICC");
@@ -410,9 +411,32 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 		igaUploadedURL = lgaUploaded.get("UploadedFileUrl");
 		
 		console.log("The most recent FuelBasedFDR_LGA uploaded file Url: " + igaUploadedURL)
+		
+		// Query FuelBasedFDR_PDD class
+		var queryPDD = new Parse.Query("FuelBasedFDR_PDD");
+		queryPDD.descending("createdAt");
+		return queryPDD.find();
+	}, function(error) {
+		console.log("There was an error in finding FuelBasedFDR_LGA.");
+		return Parse.Promise.error("There was an error in finding FuelBasedFDR_LGA.");
+	).then(function(results) {
+		console.log("FuelBasedFDR_PDD results.length=" + results.length);
+		if (results.length < 1) {
+			return Parse.Promise.error("There was zero FuelBasedFDR_PDD record found. The sendFuelBasedFDREmailToUsers function terminated here.");
+		}
+
+		// results is array of FuelBasedFDR_LGA records
+		// We only care about the most recent one
+		var pddUploaded = results[0];
+		pddUploadedURL = pddUploaded.get("UploadedFileUrl");
+		
+		console.log("The most recent FuelBasedFDR_PDD uploaded file Url: " + pddUploadedURL)
+		
+		
+		
 
 		// Send the email only when neither ICC nor IGA is null or undefined.
-		if ( (iccUploadedURL) && (igaUploadedURL) ) {
+		if ( (iccUploadedURL) && (igaUploadedURL) && (pddUploadedURL) ) {
 			//
 			// use Mailgun to send email
 			var mailgun = require('mailgun-js')({apiKey: MG_KEY, domain: MG_DOMAIN});
@@ -433,20 +457,21 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<ul>' +
 						'<li><a href="' + iccUploadedURL + '" target="_top">Fuel Based FDR for each ICC Footprint</a> (file size: approx. 7 MB), and</li>' +
 						'<li><a href="' + igaUploadedURL + '" target="_top">Fuel Based FDR for each LGA (AGENCY USE)</a> (file size: approx. 10 MB)</li>' +
+						'<li><a href="' + pddUploadedURL + '" target="_top">Fuel Based FDR for each PDD</a> (file size: approx. 10 MB)</li>' +
 						'</ul>' + 
 						'<br>' + 
-						'<p>Please note that the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 7.30 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Vic Briefings & Outlooks" and find the reports.</p>' + 
+						'<p>For EM-COP users, please note that the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 8.15 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Briefings & Bulletins" and find all these reports. The PDD report is also available on "DESKTOP" -> "Sections" -> "Aviation".</p>' + 
 						'<br>' + 
-						'<p>In addition to the PDF reports, the research and development team have developed an interactive web map, which allows you to see the spatial forecast with a time slider, and zoom in and query features.</p>' + 
-						'<br>' + 
-						'<p>You can click the links below to view the interactive web maps that will be opened in your web browser.</p>' + 
-						'<ul>' +
-						'<li><a href="https://cfavic.maps.arcgis.com/apps/webappviewer/index.html?id=7444f26aa4b34a8093ea62b8d0230299" target="_top">Interactive Map for ICC Footprints</a>, and</li>' +
-						'<li><a href="https://cfavic.maps.arcgis.com/apps/webappviewer/index.html?id=5f57eabfce7747c6be7ad30c1f667956" target="_top">Interactive Map for LGAs (AGENCY USE)</a></li>' +
-						'</ul>' + 
-						'<br>' + 
-						'<p>You can click on <img border=0 width=37 height=36 src="https://s3.amazonaws.com/bushfire-shared-images/timeWidget.png" alt="timeWidget"> to turn on/off the time slider. Once it is activated, the animation is started and a time widget is shown as below as you can see the change in FDR starting with today (Day 0) over a four day period. You can pause and re-play from the widget.' +
- 						'<br>' + 
+						//'<p>In addition to the PDF reports, the research and development team have developed an interactive web map, which allows you to see the spatial forecast with a time slider, and zoom in and query features.</p>' + 
+						//'<br>' + 
+						//'<p>You can click the links below to view the interactive web maps that will be opened in your web browser.</p>' + 
+						//'<ul>' +
+						//'<li><a href="https://cfavic.maps.arcgis.com/apps/webappviewer/index.html?id=7444f26aa4b34a8093ea62b8d0230299" target="_top">Interactive Map for ICC Footprints</a>, and</li>' +
+						//'<li><a href="https://cfavic.maps.arcgis.com/apps/webappviewer/index.html?id=5f57eabfce7747c6be7ad30c1f667956" target="_top">Interactive Map for LGAs (AGENCY USE)</a></li>' +
+						//'</ul>' + 
+						//'<br>' + 
+						//'<p>You can click on <img border=0 width=37 height=36 src="https://s3.amazonaws.com/bushfire-shared-images/timeWidget.png" alt="timeWidget"> to turn on/off the time slider. Once it is activated, the animation is started and a time widget is shown as below as you can see the change in FDR starting with today (Day 0) over a four day period. You can pause and re-play from the widget.' +
+ 						//'<br>' + 
 						'<br>' + 
 						'<p>Kind Regards,</p>' + 
 						'<p>CFA Bushfire Research and Development Team</p>' + 
