@@ -374,7 +374,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 
 	var iccUploadedURL = null;
 	var igaUploadedURL = null;
-	var pddUploadedURL = NULL;
+	var pddUploadedURL = null;
 	
 	// Query FuelBasedFDR_ICC class
 	var queryICC = new Parse.Query("FuelBasedFDR_ICC");
