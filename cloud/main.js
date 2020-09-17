@@ -566,6 +566,7 @@ Parse.Cloud.define("sendFuelBasedFDRPDDEmailToUsers", function(request, response
 						'<li><a href="' + pddUploadedURL + '" target="_top">Fuel Based FDR for each Airfield PDD area</a> (file size: approx. 10 MB)</li>' +
 						'</ul>' + 
 						'<br>' + 
+						'<p>For <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> users, please note the updated report is also available on both "DESKTOP" -> "Weather" -> "Briefings & Bulletins" and "DESKTOP" -> "Sections" -> "Aviation".</p>' + 
 						'<br>' + 
 						'<p>Kind Regards,</p>' + 
 						'<p>CFA Bushfire Research and Development Team</p>' + 
