@@ -458,7 +458,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<li><a href="' + pddUploadedURL + '" target="_top">Fuel Based FDR for each Airfield</a> (file size: approx. 10 MB)</li>' +
 						'</ul>' + 
 						'<br>' + 
-						'<p>For EM-COP users, please note that the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> after 8.15 am daily. You can navigate to "DESKTOP" -> "Weather" -> "Briefings & Bulletins" and find the reports. The Airfield report is also available on "DESKTOP" -> "Sections" -> "Aviation".</p>' + 
+						'<p>For EM-COP users, please note that the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> respectively at 8.20 am and 6.00 pm daily. You can navigate to "DESKTOP" -> "Weather" -> "Briefings & Bulletins" and find the reports. The Airfield report is also available on "DESKTOP" -> "Sections" -> "Aviation".</p>' + 
 						'<br>' + 
 						//'<p>In addition to the PDF reports, the research and development team have developed an interactive web map, which allows you to see the spatial forecast with a time slider, and zoom in and query features.</p>' + 
 						//'<br>' + 
@@ -558,18 +558,18 @@ Parse.Cloud.define("sendFuelBasedFDRPDDEmailToUsers", function(request, response
 						'<p>Hello %recipient_fname%,</p>' + 
 						//'<p>Hello all,</p>' + 
 						'<br>' + 
-						'<p>For your information, the daily <strong>Fuel Based FDR report for Airfield PDD</strong> have been updated ' + strToday + '. Please click the following link:</p>' + 
+						'<p>For your information, the daily <strong>Fuel Based FDR report for Airfields</strong> have been updated ' + strToday + '. Please click the following link:</p>' + 
 						'<ul>' +
-						'<li><a href="' + pddUploadedURL + '" target="_top">Fuel Based FDR for each Airfield PDD area</a> (file size: approx. 10 MB)</li>' +
+						'<li><a href="' + pddUploadedURL + '" target="_top">Fuel Based FDR for each Airfield</a> (file size: approx. 10 MB)</li>' +
 						'</ul>' + 
 						'<br>' + 
 						'<p>For <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> users, please note the updated report is also available on both "DESKTOP" -> "Weather" -> "Briefings & Bulletins" and "DESKTOP" -> "Sections" -> "Aviation".</p>' + 
 						'<br>' + 
 						'<p>Kind Regards,</p>' + 
-						'<p>CFA Bushfire Research and Development Team</p>' + 
+						'<p>CFA Bushfire Research and Development</p>' + 
 						'<br>' + 
 						'<table><tr><td width="25%"><img src="https://cdn.cfa.vic.gov.au/o/cfa-theme/images/cfa-logo.png" width="64" height="64" alt="CFA_LOGO" /></td>' + 
-						'<td><p style="color:#C00000; font-weight: bold;">CFA Bushfire Research and Development Team</p><p>CFA HQ - Fire & Emergency Management</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
+						'<td><p style="color:#C00000; font-weight: bold;">CFA Bushfire Research and Development</p><p>CFA HQ - Bushfire Management</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
 						'<p>E: <a href="mailto:' + CFA_GC_TEAM_EMAIL + '" target="_top">' + CFA_GC_TEAM_EMAIL + '</a></p></td></tr></table>' + 
 						'<br>' + 
 						'</body>' + 
