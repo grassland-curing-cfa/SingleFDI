@@ -453,9 +453,9 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<br>' + 
 						'<p>For your information, the daily <strong>Fuel Based FDR reports</strong> have been updated ' + strToday + '. Please click the following links:</p>' + 
 						'<ul>' +
-						'<li><a href="' + iccUploadedURL + '" target="_top">Fuel Based FDR for each ICC Footprint</a> (file size: approx. 7 MB), and</li>' +
+						'<li><a href="' + iccUploadedURL + '" target="_top">Fuel Based FDR for each ICC Footprint (AGENCY USE)</a> (file size: approx. 7 MB), and</li>' +
 						'<li><a href="' + igaUploadedURL + '" target="_top">Fuel Based FDR for each LGA (AGENCY USE)</a> (file size: approx. 10 MB)</li>' +
-						'<li><a href="' + pddUploadedURL + '" target="_top">Fuel Based FDR for each Airfield</a> (file size: approx. 10 MB)</li>' +
+						'<li><a href="' + pddUploadedURL + '" target="_top">Fuel Based FDR for each Airfield (AGENCY USE)</a> (file size: approx. 10 MB)</li>' +
 						'</ul>' + 
 						'<br>' + 
 						'<p>For EM-COP users, please note that the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> respectively at 8.20 am and 6.00 pm daily. You can navigate to "DESKTOP" -> "Weather" -> "Briefings & Bulletins" and find the reports. The Airfield report is also available on "DESKTOP" -> "Sections" -> "Aviation".</p>' + 
@@ -560,7 +560,7 @@ Parse.Cloud.define("sendFuelBasedFDRPDDEmailToUsers", function(request, response
 						'<br>' + 
 						'<p>For your information, the daily <strong>Fuel Based FDR report for Airfields</strong> have been updated ' + strToday + '. Please click the following link:</p>' + 
 						'<ul>' +
-						'<li><a href="' + pddUploadedURL + '" target="_top">Fuel Based FDR for each Airfield</a> (file size: approx. 10 MB)</li>' +
+						'<li><a href="' + pddUploadedURL + '" target="_top">Fuel Based FDR for each Airfield (AGENCY USE)</a> (file size: approx. 10 MB)</li>' +
 						'</ul>' + 
 						'<br>' + 
 						'<p>For <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> users, please note the updated report is also available on both "DESKTOP" -> "Weather" -> "Briefings & Bulletins" and "DESKTOP" -> "Sections" -> "Aviation".</p>' + 
