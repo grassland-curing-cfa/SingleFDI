@@ -475,7 +475,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'<br>' + 
 						'<table><tr><td width="25%"><img src="https://cdn.cfa.vic.gov.au/o/cfa-theme/images/cfa-logo.png" width="64" height="64" alt="CFA_LOGO" /></td>' + 
 						'<td><p style="color:#C00000; font-weight: bold;">CFA Bushfire Research and Development</p><p>CFA HQ - Bushfire Management</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
-						'<p>E: <a href="mailto:' + CFA_GC_TEAM_EMAIL + '" target="_top">' + CFA_GC_TEAM_EMAIL + '</a></p></td></tr></table>' + 
+						'<p>E: <a href="mailto:' + CFA_NEMP_EMAIL + '" target="_top">' + CFA_NEMP_EMAIL + '</a></p></td></tr></table>' + 
 						'<br>' + 
 						'</body>' + 
 						'</html>';
@@ -485,7 +485,7 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 			var data = {
 				to: MG_MAIL_LIST_NAME,
 				//cc: CFA_NEMP_EMAIL,
-				from: CFA_GC_TEAM_EMAIL,
+				from: CFA_NEMP_EMAIL,
 				subject: MG_FB_MAIL_SUBJUST_PREFIX + strToday,
 				text: "",
 				html: htmlString
@@ -570,7 +570,7 @@ Parse.Cloud.define("sendFuelBasedFDRPDDEmailToUsers", function(request, response
 						'<br>' + 
 						'<table><tr><td width="25%"><img src="https://cdn.cfa.vic.gov.au/o/cfa-theme/images/cfa-logo.png" width="64" height="64" alt="CFA_LOGO" /></td>' + 
 						'<td><p style="color:#C00000; font-weight: bold;">CFA Bushfire Research and Development</p><p>CFA HQ - Bushfire Management</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
-						'<p>E: <a href="mailto:' + CFA_GC_TEAM_EMAIL + '" target="_top">' + CFA_GC_TEAM_EMAIL + '</a></p></td></tr></table>' + 
+						'<p>E: <a href="mailto:' + CFA_NEMP_EMAIL + '" target="_top">' + CFA_NEMP_EMAIL + '</a></p></td></tr></table>' + 
 						'<br>' + 
 						'</body>' + 
 						'</html>';
@@ -580,7 +580,7 @@ Parse.Cloud.define("sendFuelBasedFDRPDDEmailToUsers", function(request, response
 			var data = {
 				to: MG_MAIL_LIST_NAME_FOR_AIRFIELD_PDD,
 				//cc: CFA_NEMP_EMAIL,
-				from: CFA_GC_TEAM_EMAIL,
+				from: CFA_NEMP_EMAIL,
 				subject: MG_FB_MAIL_SUBJUST_PREFIX + "for Airfield PDD Areas " + strToday,
 				text: "",
 				html: htmlString
