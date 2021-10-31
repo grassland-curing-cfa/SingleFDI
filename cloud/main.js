@@ -564,12 +564,13 @@ Parse.Cloud.define("sendFuelBasedFDRPDDEmailToUsers", function(request, response
 						'</ul>' + 
 						'<br>' + 
 						'<p>For <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> users, please note the updated report is also available on both "DESKTOP" -> "Weather" -> "Briefings & Bulletins" and "DESKTOP" -> "Sections" -> "Aviation".</p>' + 
+						'<p style="font-weight: bold;">Please note: we are experiencing technical difficulties uploading those reports to EM-COP. While we are fixing the issue, please use the links as above to download the reports.</p>' + 
 						'<br>' + 
 						'<p>Kind Regards,</p>' + 
 						'<p>CFA Bushfire Research and Development</p>' + 
 						'<br>' + 
-						'<table><tr><td width="25%"><img src="https://cdn.cfa.vic.gov.au/o/cfa-theme/images/cfa-logo.png" width="64" height="64" alt="CFA_LOGO" /></td>' + 
-						'<td><p style="color:#C00000; font-weight: bold;">CFA Bushfire Research and Development</p><p>CFA HQ - Bushfire Management</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
+						'<table><tr><td width="25%"><img src="https://www.cfa.vic.gov.au/Images/UserUploadedImages/11/CFA_logo.png" width="64" height="64" alt="CFA_LOGO" /></td>' + 
+						'<td><p style="color:#C00000; font-weight: bold;">CFA Bushfire Research and Development</p><p>Fire Risk, Research and Community Preparedness</p><p>8 Lakeside Drive, Burwood East, Victoria 3151</p>' + 
 						'<p>E: <a href="mailto:' + CFA_NEMP_EMAIL + '" target="_top">' + CFA_NEMP_EMAIL + '</a></p></td></tr></table>' + 
 						'<br>' + 
 						'</body>' + 
