@@ -459,7 +459,6 @@ Parse.Cloud.define("sendFuelBasedFDREmailToUsers", function(request, response) {
 						'</ul>' + 
 						'<br>' + 
 						'<p>For EM-COP users, please note that the updated reports will also be available on <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> respectively at 8.20 am and 6.00 pm daily. You can navigate to "DESKTOP" -> "Weather" -> "Briefings & Bulletins" and find the reports. The Airfield report is also available on "DESKTOP" -> "Sections" -> "Aviation".</p>' + 
-						'<p style="font-weight: bold;">Please note: we are experiencing technical difficulties uploading those reports to EM-COP. While we are fixing the issue, please use the links as above to download the reports.</p>' + 
 						'<br>' + 
 						//'<p>In addition to the PDF reports, the research and development team have developed an interactive web map, which allows you to see the spatial forecast with a time slider, and zoom in and query features.</p>' + 
 						//'<br>' + 
@@ -565,7 +564,6 @@ Parse.Cloud.define("sendFuelBasedFDRPDDEmailToUsers", function(request, response
 						'</ul>' + 
 						'<br>' + 
 						'<p>For <a href="http://cop.em.vic.gov.au/sadisplay/nicslogin.seam" target="_top">EM-COP</a> users, please note the updated report is also available on both "DESKTOP" -> "Weather" -> "Briefings & Bulletins" and "DESKTOP" -> "Sections" -> "Aviation".</p>' + 
-						'<p style="font-weight: bold;">Please note: we are experiencing technical difficulties uploading those reports to EM-COP. While we are fixing the issue, please use the links as above to download the reports.</p>' + 
 						'<br>' + 
 						'<p>Kind Regards,</p>' + 
 						'<p>CFA Bushfire Research and Development</p>' + 
